@@ -1,0 +1,23 @@
+<strong> Search Artists </strong>
+<br>
+<%= link_to 'Home', welcome_index_path %>
+<%= form_tag(search_artists_path, :method => "get") do %>
+    <p>
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+    </p>
+<% end %>
+<% if logged_in? && current_user.song_reviews.size > 0 %>
+    <p>Based on songs you've enjoyed, you might like:</p>
+    <p>
+    <% artist_recs.each do |rec| %>
+         <%= link_to rec.name, artist_path(rec.id) %>
+         <br>
+    <% end %>
+    </p>
+<% end %>
+<p> Results: </p>
+<% if @results != nil %>
+    <% @results.first(20).each do |result| %>
+        <%= link_to result.name, artist_path(result) %><br>  
+    <% end %>
+<% end %>

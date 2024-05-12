@@ -1,0 +1,35 @@
+<%= form_for @song_review, local: true do |form| %>
+
+    <h1> Rating </h1>
+    <%= radio_button_tag(:rating, 1) %>
+    <%= label_tag(:one, 1) %>
+    <%= radio_button_tag(:rating, 2) %>
+    <%= label_tag(:two, 2) %>
+    <%= radio_button_tag(:rating, 3) %>
+    <%= label_tag(:three, 3) %>
+    <%= radio_button_tag(:rating, 4) %>
+    <%= label_tag(:four, 4) %>
+    <%= radio_button_tag(:rating, 5) %>
+    <%= label_tag(:five, 5) %>
+    <%= radio_button_tag(:rating, 6) %>
+    <%= label_tag(:six, 6) %>
+    <%= radio_button_tag(:rating, 7) %>
+    <%= label_tag(:seven, 7) %>
+    <%= radio_button_tag(:rating, 8) %>
+    <%= label_tag(:eight, 8) %>
+    <%= radio_button_tag(:rating, 9) %>
+    <%= label_tag(:nine, 9) %>
+    <%= radio_button_tag(:rating, 10) %>
+    <%= label_tag(:ten, 10) %>
+   
+    <p>
+      <%= form.label :review %><br>
+      <%= form.text_area :review %>
+    </p>
+
+    <%= form.hidden_field :song_id, value: params[:song_id] %>
+   
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>

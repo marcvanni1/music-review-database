@@ -1,0 +1,16 @@
+<%= link_to 'Home', welcome_index_path %>
+<p>
+<strong>Name:</strong>
+<%= @artist.name %>
+</p>
+
+<p>
+<%if @artist.albums.size > 0 %>
+<strong>Albums:</strong>
+<br>
+<% @artist.albums.each do |alb| %>
+    <%= link_to alb.title, album_path(alb) %>
+    <br>
+<% end %>
+<% end %>
+</p>

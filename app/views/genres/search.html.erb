@@ -1,0 +1,14 @@
+<strong> Search Genres </strong>
+<br>
+<%= link_to 'Home', welcome_index_path %>
+<%= form_tag(search_genres_path, :method => "get") do %>
+    <p>
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+    </p>
+<% end %>
+<p> Results: </p>
+<% if @results != nil %>
+    <% @results.first(20).each do |result| %>
+        <%= link_to result.genre_name, genre_path(result) %><br>  
+    <% end %>
+<% end %>

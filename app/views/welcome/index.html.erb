@@ -1,0 +1,76 @@
+<% if logged_in? %>
+    <h1>Welcome, <%= current_user.username %>!</h1>
+<% else %>
+    <h1>Welcome!</h1>
+<% end %>
+<p>Trending Albums:
+<br>
+<% trending_albums.each do |rec| %>
+    <%= link_to rec.title, album_path(rec.id) %>
+    <br>
+<% end %>
+<br>
+Trending Songs:
+<br>
+<% trending_songs.each do |rec| %>
+    <%= link_to rec.title, song_path(rec.id) %>
+    <br>
+<% end %>
+</p>
+<p> Top Songs: </p>
+<% highest_songs.each do |rec| %>
+    <%= link_to rec.title, song_path(rec.id) %> Rating: <%= rec.avg_rating %>
+    <br>
+<% end %>
+<br>
+<br>
+<td><%= link_to 'Search Artists', search_artists_path %></td>
+<br>
+<td><%= link_to 'Search Albums', search_albums_path %></td>
+<br>
+<td><%= link_to 'Search Songs', search_songs_path %></td>
+<br>
+<td><%= link_to 'Search Users', search_users_path %></td>
+<br>
+<td><%= link_to 'Search Genres', search_genres_path %></td>
+<br>
+<% if logged_in? && current_user.song_reviews.size > 0 %>
+    <p>Based on genres you've listened to, you might also enjoy these songs:</p>
+    <p>
+    <% genre_song_recs.each do |rec| %>
+         <%= link_to rec.title, song_path(rec.id) %>
+         <br>
+    <% end %>
+    <br>
+    Or these albums:
+    <br>
+    <% genre_album_recs.each do |rec| %>
+        <%= link_to rec.title, album_path(rec.id) %>
+        <br>
+   <% end %>
+   <br>
+   <br>
+   Based on your recent reviews, you might enjoy these songs:
+   <br>
+   <% recent_songs.each do |rec| %>
+    <%= link_to rec.title, song_path(rec.id) %>
+    <br>
+   <% end %>
+   <br> Or these albums:
+   <br>
+   <% recent_albums.each do |rec| %>
+       <%= link_to rec.title, album_path(rec.id) %>
+       <br>
+  <% end %>
+    </p>
+<% end %>
+<br>
+<br>
+<br>
+<% if logged_in? %>
+    <%= button_to 'Log out', logout_path, method: :delete %>
+    <%= button_to 'Delete account', user_path(current_user.id), data: { confirm: "Are you sure you want to delete your account?"}, method: :delete %>
+<% else %>
+    <%= button_to "Login", login_path, method: :get%>
+    <%= button_to "Sign Up", '/users/new', method: :get%>
+<% end %>

@@ -1,0 +1,30 @@
+<strong> Search Albums </strong>
+<br>
+<%= link_to 'Home', welcome_index_path %>
+<%= form_tag(search_albums_path, :method => "get") do %>
+    <p>
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+    </p>
+<% end %>
+<% if logged_in? && current_user.song_reviews.size > 0 %>
+    <p>Based on users similar to you, you might also enjoy:</p>
+    <p>
+    <% album_recs.each do |rec| %>
+         <%= link_to rec.title, album_path(rec.id) %>
+         <br>
+    <% end %>
+    <br>
+    Based off of users you follow, you might like:
+    <br>
+    <% album_follow_recs.each do |rec| %>
+        <%= link_to rec.title, album_path(rec.id) %>
+        <br>
+   <% end %>
+    </p>
+<% end %>
+<p> Results: </p>
+<% if @results != nil %>
+    <% @results.first(20).each do |result| %>
+        <%= link_to result.title, album_path(result) %><br>  
+    <% end %>
+<% end %>

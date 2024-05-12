@@ -1,0 +1,21 @@
+<%= link_to 'Home', welcome_index_path %>
+<br>
+<p>
+<strong>Name:</strong>
+<%= @genre.genre_name %>
+</p>
+
+<br>
+Top Songs:
+<br>
+<% high_songs.each do |song| %>
+    <%= link_to song.title, song_path(song) %>
+    <br>
+<% end %>
+<br>
+Top Albums:
+<br>
+<% high_albums.each do |alb| %>
+    <%= link_to alb.title, album_path(alb) %>
+    <br>
+<% end %>

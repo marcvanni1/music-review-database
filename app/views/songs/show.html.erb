@@ -1,0 +1,71 @@
+<%= link_to 'Home', welcome_index_path %>
+<br>
+<p>
+<strong>Name:</strong>
+<%= @song.title %>
+</p>
+
+<br>
+By:
+<% @song.artists.each do |art| %>
+    <%= link_to art.name, artist_path(art) %>
+    <br>
+<% end %>
+<br>
+<% if @song.albums.size > 0 %>
+  Appears in:
+ <% @song.albums.each do |alb| %>
+      <%= link_to alb.title, album_path(alb) %>
+      <br>
+  <% end %>
+<% end %>
+
+<% if @song.genres.size > 0 %>
+Genres:
+<%= @song.format_genres %>
+
+<% end %>
+
+
+<% if @song.song_reviews.size > 0  && @song.avg_rating > 0 %>
+    <p> Average Rating: <%= @song.avg_rating %> </p>
+<% else %>
+    <p> Average Rating: N/A </p>
+<% end %>
+
+<br>
+<% if logged_in? %>
+    <%= link_to 'Write Review', new_song_review_path(song_id: @song.id) %>
+<% else %>
+    <h1>Log in to write a review!</h1>
+<% end %>
+<br>
+<br>
+If you enjoy <%= @song.title %>, you might also enjoy these songs:
+<br>
+<% similar_songs.each do |song| %>
+    <%= link_to song.title, song_path(song) %>
+    <br>
+<% end %>
+
+<% if @song.song_reviews.size > 0 %>
+<h1> Reviews </h1>
+<p>
+<% @song.song_reviews.each do |review| %>
+    <h4> <%= review.user.username %> </h4>
+    <%= review.date_created %>
+    <br>
+    <% if review.rating > 0 %>
+        Rating:
+        <%= review.rating %>
+        <br>
+    <% end %>
+    <% if review.review != "" %>
+        Review:
+        <br>
+        <%= review.review %>
+    <% end %>
+    <br>
+<% end %>
+<% end %>
+</p>

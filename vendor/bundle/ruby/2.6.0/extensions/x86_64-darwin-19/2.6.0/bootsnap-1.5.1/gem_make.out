@@ -1,0 +1,15 @@
+current directory: /Users/reed/Desktop/music_db/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.5.1/ext/bootsnap
+/Users/reed/.rvm/rubies/ruby-2.6.3/bin/ruby -I /Users/reed/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20201112-75155-s2bn0t.rb extconf.rb
+creating Makefile
+
+current directory: /Users/reed/Desktop/music_db/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.5.1/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/reed/Desktop/music_db/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.5.1/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/reed/Desktop/music_db/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.5.1/ext/bootsnap
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20201112-75155-18e88uy/bootsnap

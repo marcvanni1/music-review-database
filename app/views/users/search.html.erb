@@ -1,0 +1,23 @@
+<strong> Search Users </strong>
+<br>
+<%= link_to 'Home', welcome_index_path %>
+<%= form_tag(search_users_path, :method => "get") do %>
+    <p>
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+    </p>
+<% end %>
+<% if logged_in? && user_recs.size > 0 %>
+    <p>You have similar taste to:</p>
+    <p>
+    <% user_recs.each do |rec| %>
+         <%= link_to rec.username, user_path(rec.id) %>
+         <br>
+    <% end %>
+    </p>
+<% end %>
+<p> Results: </p>
+<% if @results != nil %>
+    <% @results.first(20).each do |result| %>
+        <%= link_to result.username, user_path(result) %><br>
+    <% end %>
+<% end %>

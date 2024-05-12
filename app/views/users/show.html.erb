@@ -1,0 +1,55 @@
+<%= link_to 'Home', welcome_index_path %>
+<br>
+<p>
+<strong>User:</strong>
+<%= @user.username %>
+</p>
+
+<p> Followers:  <%= @user.num_followers %>  Following:  <%= @user.num_following %> </p>
+<% if logged_in? && current_user.id != @user.id %>
+    <% if current_user.follows?(@user) %> 
+        <%= button_to "Unfollow", unfollow_user_path(@user), method: :delete%>
+    <% else %>
+        <%= button_to "Follow", follow_user_path(@user), method: :post%>
+    <% end %>
+<% end %>
+
+<h1> Album Reviews </h1>
+<p>
+<% @user.album_reviews.each do |review| %>
+    <h4> <%= review.album.title %> </h4>
+    <%= review.date_created %>
+    <br>
+    <% if review.rating > 0 %>
+        Rating:
+        <%= review.rating %>
+        <br>
+    <% end %>
+    <% if review.review != "" %>
+        Review:
+        <br>
+        <%= review.review %>
+    <% end %>
+    <br>
+<% end %>
+</p>
+
+<h1> Song Reviews </h1>
+<p>
+<% @user.song_reviews.each do |review| %>
+    <h4> <%= review.song.title %> </h4>
+    <%= review.date_created %>
+    <br>
+    <% if review.rating > 0 %>
+        Rating:
+        <%= review.rating %>
+        <br>
+    <% end %>
+    <% if review.review != "" %>
+        Description:
+        <br>
+        <%= review.review %>
+    <% end %>
+    <br>
+<% end %>
+</p>

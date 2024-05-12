@@ -1,0 +1,41 @@
+current directory: /Users/reed/Desktop/music_db/vendor/bundle/ruby/2.7.0/gems/puma-4.3.6/ext/puma_http11
+/usr/local/opt/ruby/bin/ruby -I /usr/local/Cellar/ruby/2.7.2/lib/ruby/2.7.0 -r ./siteconf20201112-76984-19ddmg3.rb extconf.rb
+checking for BIO_read() in -lcrypto... yes
+checking for SSL_CTX_new() in -lssl... yes
+checking for openssl/bio.h... yes
+checking for DTLS_method() in openssl/ssl.h... yes
+checking for TLS_server_method() in openssl/ssl.h... yes
+checking for SSL_CTX_set_min_proto_version in openssl/ssl.h... yes
+creating Makefile
+
+current directory: /Users/reed/Desktop/music_db/vendor/bundle/ruby/2.7.0/gems/puma-4.3.6/ext/puma_http11
+make "DESTDIR=" clean
+
+current directory: /Users/reed/Desktop/music_db/vendor/bundle/ruby/2.7.0/gems/puma-4.3.6/ext/puma_http11
+make "DESTDIR="
+compiling http11_parser.c
+warning: unknown warning option '-Wmisleading-indentation'; did you mean '-Wbinding-in-condition'? [-Wunknown-warning-option]
+ext/puma_http11/http11_parser.c:44:18: warning: unused variable 'puma_parser_en_main' [-Wunused-const-variable]
+static const int puma_parser_en_main = 1;
+                 ^
+2 warnings generated.
+compiling io_buffer.c
+warning: unknown warning option '-Wmisleading-indentation'; did you mean '-Wbinding-in-condition'? [-Wunknown-warning-option]
+1 warning generated.
+compiling mini_ssl.c
+warning: unknown warning option '-Wmisleading-indentation'; did you mean '-Wbinding-in-condition'? [-Wunknown-warning-option]
+mini_ssl.c:145:7: warning: unused variable 'min' [-Wunused-variable]
+  int min, ssl_options;
+      ^
+mini_ssl.c:299:40: warning: function 'raise_error' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+void raise_error(SSL* ssl, int result) {
+                                       ^
+3 warnings generated.
+compiling puma_http11.c
+warning: unknown warning option '-Wmisleading-indentation'; did you mean '-Wbinding-in-condition'? [-Wunknown-warning-option]
+1 warning generated.
+linking shared-object puma/puma_http11.bundle
+
+current directory: /Users/reed/Desktop/music_db/vendor/bundle/ruby/2.7.0/gems/puma-4.3.6/ext/puma_http11
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 puma_http11.bundle ./.gem.20201112-76984-1hz3z/puma
